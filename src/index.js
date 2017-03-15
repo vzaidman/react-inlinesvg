@@ -60,7 +60,7 @@ const isSupportedEnvironment = once(() =>
 const uniquifyIDs = (() => {
   const mkAttributePattern = attr => `(?:(?:\\s|\\:)${attr})`;
 
-  const idPattern = new RegExp(`(?:(${(mkAttributePattern('id'))})="([^"]+)")|(?:(${(mkAttributePattern('href'))}|${(mkAttributePattern('role'))}|${(mkAttributePattern('arcrole'))})="\\#([^"]+)")|(?:="url\\(\\#([^\\)]+)\\)")`, 'g');
+  const idPattern = new RegExp(`(?:(${(mkAttributePattern('id'))})="([^"]+)")|(?:(${(mkAttributePattern('href'))}|${(mkAttributePattern('role'))}|${(mkAttributePattern('arcrole'))})="\\#([^"]+)")|(?:="url\\(\\'?\\#([^\\)]+)\\'?\\)")`, 'g');
 
   return (svgText, svgID) => {
     const uniquifyID = id => `${id}___${svgID}`;
